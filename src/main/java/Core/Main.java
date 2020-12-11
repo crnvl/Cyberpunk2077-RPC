@@ -1,4 +1,4 @@
-package Main;
+package Core;
 
 import Lib.Game;
 import club.minnced.discord.rpc.DiscordEventHandlers;
