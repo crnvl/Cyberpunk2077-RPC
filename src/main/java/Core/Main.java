@@ -11,6 +11,8 @@ import java.io.IOException;
 
 public class Main {
 
+    static String role, level;
+
     public static void main(String[] args) throws IOException, ParseException {
         System.out.println("[INFO] Waiting for Cyberpunk 2077 to start.");
         boolean processFound = Game.waitForGame();
@@ -24,10 +26,10 @@ public class Main {
             String steamId = "1091500";
             DiscordEventHandlers handlers = new DiscordEventHandlers();
             handlers.ready = (user) -> System.out.println("[INFO] Rich Presence is ready.");
+            Savestate.output = false;
             lib.Discord_Initialize(applicationId, handlers, true, steamId);
             DiscordRichPresence presence = new DiscordRichPresence();
 
-            String role, level;
             if(withFile) {
                 role = "Playing as " + Savestate.getRole();
                 level = "Level " + Savestate.getLevel();
@@ -52,8 +54,19 @@ public class Main {
                         if(!Game.checkAvailable()) {
                             System.out.println("[INFO] Closed Game. Disconnecting.");
                             System.exit(0);
+                        }else {
+                            if(withFile) {
+                                role = "Playing as " + Savestate.getRole();
+                                level = "Level " + Savestate.getLevel();
+                                presence.state = level;
+                                lib.Discord_UpdatePresence(presence);
+                            }else {
+                                role = "in Night City";
+                            }
                         }
                     } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (ParseException e) {
                         e.printStackTrace();
                     }
                 }

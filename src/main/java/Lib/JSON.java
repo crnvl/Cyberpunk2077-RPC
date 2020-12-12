@@ -10,6 +10,7 @@ import java.io.IOException;
 public class JSON {
     
     public static String readLifePath() throws IOException, ParseException {
+        Savestate.savestateExist();
         JSONParser parser = new JSONParser();
         JSONObject o = (JSONObject) parser.parse(new FileReader(Savestate.pathFile + "\\metadata.9.json"));
 
