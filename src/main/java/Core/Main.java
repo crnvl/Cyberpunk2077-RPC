@@ -1,17 +1,21 @@
 package Core;
 
 import Lib.Game;
+import Lib.Savestate;
 import club.minnced.discord.rpc.DiscordEventHandlers;
 import club.minnced.discord.rpc.DiscordRPC;
 import club.minnced.discord.rpc.DiscordRichPresence;
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
-
-        boolean processFound = Game.checkAvailable();
+    public static void main(String[] args) throws IOException, ParseException {
+        System.out.println("[INFO] Waiting for Cyberpunk 2077 to start.");
+        boolean processFound = Game.waitForGame();
+        System.out.println("[INFO] Trying to read Savefile.");
+        boolean withFile = Savestate.savestateExist();
 
         if(processFound) {
 
@@ -19,11 +23,21 @@ public class Main {
             String applicationId = "787025364677296148";
             String steamId = "1091500";
             DiscordEventHandlers handlers = new DiscordEventHandlers();
-            handlers.ready = (user) -> System.out.println("Ready!");
+            handlers.ready = (user) -> System.out.println("[INFO] Rich Presence is ready.");
             lib.Discord_Initialize(applicationId, handlers, true, steamId);
             DiscordRichPresence presence = new DiscordRichPresence();
+
+            String role, level;
+            if(withFile) {
+                role = "Playing as " + Savestate.getRole();
+                level = "Level " + Savestate.getLevel();
+                presence.state = level;
+            }else {
+                role = "in Night City";
+            }
+
             presence.startTimestamp = System.currentTimeMillis() / 1000; // epoch second
-            presence.details = "in Night City";
+            presence.details = role;
             presence.largeImageKey = "cp";
             lib.Discord_UpdatePresence(presence);
             // in a worker thread
@@ -36,7 +50,7 @@ public class Main {
 
                     try {
                         if(!Game.checkAvailable()) {
-                            System.out.println("Closed Game. Disconnecting.");
+                            System.out.println("[INFO] Closed Game. Disconnecting.");
                             System.exit(0);
                         }
                     } catch (IOException e) {
@@ -46,7 +60,7 @@ public class Main {
             }, "RPC-Callback-Handler").start();
 
         }else {
-            System.out.println("Process not found. Please start Cyberpunk 2077 and try again!");
+            System.out.println("[WARNING] Process not found. Please start Cyberpunk 2077 and try again!");
         }
     }
 }
