@@ -53,7 +53,7 @@ public class Main {
                     try {
                         if(!Game.checkAvailable()) {
                             System.out.println("[INFO] Closed Game. Disconnecting.");
-                            System.exit(0);
+                            main(args);
                         }else {
                             if(withFile) {
                                 role = "Playing as " + Savestate.getRole();
