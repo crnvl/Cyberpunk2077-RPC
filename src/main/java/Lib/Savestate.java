@@ -64,8 +64,8 @@ public class Savestate {
     }
 
     public static boolean containsUser(String pathFile) throws IOException {
-        pathFile = pathFile.replace("C:\\Users\\Luna\\Saved Games\\CD Projekt Red\\Cyberpunk 2077\\", "");
-        String content = Files.readString(Path.of("C:\\Users\\Luna\\Saved Games\\CD Projekt Red\\Cyberpunk 2077\\user.gls"), StandardCharsets.ISO_8859_1);
+        pathFile = pathFile.replace("C:\\Users\\" + System.getProperty("user.name") + "\\Saved Games\\CD Projekt Red\\Cyberpunk 2077\\", "");
+        String content = Files.readString(Path.of("C:\\Users\\" + System.getProperty("user.name") + "\\Saved Games\\CD Projekt Red\\Cyberpunk 2077\\user.gls"), StandardCharsets.ISO_8859_1);
         if(content.contains(pathFile)) {
             if (!pathFile.equals(latest)) {
                 System.out.println("[INFO] Loaded Savestate " + pathFile);
