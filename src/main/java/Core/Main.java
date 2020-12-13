@@ -53,6 +53,7 @@ public class Main {
                     try {
                         if(!Game.checkAvailable()) {
                             System.out.println("[INFO] Closed Game. Disconnecting.");
+                            lib.Discord_Shutdown();
                             main(args);
                         }else {
                             if(withFile) {
