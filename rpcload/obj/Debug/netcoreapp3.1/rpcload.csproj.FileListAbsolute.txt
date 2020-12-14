@@ -1,0 +1,10 @@
+D:\Development\rpcload\bin\Debug\netcoreapp3.1\rpcload.exe
+D:\Development\rpcload\bin\Debug\netcoreapp3.1\rpcload.deps.json
+D:\Development\rpcload\bin\Debug\netcoreapp3.1\rpcload.runtimeconfig.json
+D:\Development\rpcload\bin\Debug\netcoreapp3.1\rpcload.runtimeconfig.dev.json
+D:\Development\rpcload\bin\Debug\netcoreapp3.1\rpcload.dll
+D:\Development\rpcload\bin\Debug\netcoreapp3.1\rpcload.pdb
+D:\Development\rpcload\obj\Debug\netcoreapp3.1\rpcload.AssemblyInfoInputs.cache
+D:\Development\rpcload\obj\Debug\netcoreapp3.1\rpcload.AssemblyInfo.cs
+D:\Development\rpcload\obj\Debug\netcoreapp3.1\rpcload.dll
+D:\Development\rpcload\obj\Debug\netcoreapp3.1\rpcload.pdb

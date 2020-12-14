@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>rpcload</id>
+    <version>1.0.0</version>
+    <authors>angelsflyinhell</authors>
+    <owners>angelsflyinhell</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A Third-Party RPC for Cyberpunk 2077.</description>
+    <repository url="https://github.com/angelsflyinhell/Cyberpunk2077-RPC" />
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\Development\rpcload\bin\Debug\netcoreapp3.1\rpcload.runtimeconfig.json" target="lib\netcoreapp3.1\rpcload.runtimeconfig.json" />
+    <file src="D:\Development\rpcload\bin\Debug\netcoreapp3.1\rpcload.dll" target="lib\netcoreapp3.1\rpcload.dll" />
+  </files>
+</package>

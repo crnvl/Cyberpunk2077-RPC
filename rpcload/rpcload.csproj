@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>angelsflyinhell</Authors>
+    <Company>namespacemedia</Company>
+    <Product>Cyberpunk2077 RPC</Product>
+    <Description>A Third-Party RPC for Cyberpunk 2077.</Description>
+    <RepositoryUrl>https://github.com/angelsflyinhell/Cyberpunk2077-RPC</RepositoryUrl>
+    <ApplicationIcon />
+    <StartupObject>rpcload.Program</StartupObject>
+    <Configurations>Debug;Release;CP</Configurations>
+  </PropertyGroup>
+
+</Project>

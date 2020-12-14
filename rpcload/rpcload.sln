@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rpcload", "rpcload.csproj", "{C561638F-DFB5-48D4-B144-B239B0A72756}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CP|Any CPU = CP|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C561638F-DFB5-48D4-B144-B239B0A72756}.CP|Any CPU.ActiveCfg = CP|Any CPU
+		{C561638F-DFB5-48D4-B144-B239B0A72756}.CP|Any CPU.Build.0 = CP|Any CPU
+		{C561638F-DFB5-48D4-B144-B239B0A72756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C561638F-DFB5-48D4-B144-B239B0A72756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C561638F-DFB5-48D4-B144-B239B0A72756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C561638F-DFB5-48D4-B144-B239B0A72756}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C8447CD-48DB-43C0-8257-C57BA3E54715}
+	EndGlobalSection
+EndGlobal
