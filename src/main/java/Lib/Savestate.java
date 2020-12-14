@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Savestate {
     public static String pathFile;
@@ -24,8 +25,13 @@ public class Savestate {
     public static boolean savestateExist() throws IOException {
         int i = 0;
         boolean save = false;
+        long count = Files.find(
+                Paths.get("C:\\Users\\" + System.getProperty("user.name") + "\\Saved Games\\CD Projekt Red\\Cyberpunk 2077"),
+                1,  // how deep do we want to descend
+                (path, attributes) -> attributes.isDirectory()
+        ).count() - 1; // '-1' because '/tmp' is also counted in
 
-        for (int j = 0; j < 11; j++) {
+        for (int j = 0; j < count; j++) {
             Path path = Path.of("C:\\Users\\" + System.getProperty("user.name") + "\\Saved Games\\CD Projekt Red\\Cyberpunk 2077\\ManualSave-" + j);
 
             if(Files.exists(path) && containsUser(String.valueOf(path))) {
@@ -41,7 +47,7 @@ public class Savestate {
                     System.out.println("[WARNING] Could not find a Manual Savestate. Looking further.");
                 }
 
-                for (int k = 0; k < 11; k++) {
+                for (int k = 0; k < count; k++) {
                     path = Path.of("C:\\Users\\" + System.getProperty("user.name") + "\\Saved Games\\CD Projekt Red\\Cyberpunk 2077\\AutoSave-" + k);
 
                     if(Files.exists(path) && containsUser(String.valueOf(path))) {
