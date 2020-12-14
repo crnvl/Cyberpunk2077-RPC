@@ -41,7 +41,7 @@ public class Savestate {
                 if (output) {
                     System.out.println("[INFO] Manual Savestate loaded.");
                 }
-            }else if(j == 10) {
+            }else if(j == count + 1) {
 
                 if (output) {
                     System.out.println("[WARNING] Could not find a Manual Savestate. Looking further.");
@@ -57,7 +57,7 @@ public class Savestate {
                         if (output) {
                             System.out.println("[INFO] Automatic Savestate loaded.");
                         }
-                    }else if(k == 10) {
+                    }else if(k == count + 1) {
                         if (output) {
                             System.out.println("[WARNING] Could not find a savestate! Please keep playing and try again.");
                             System.out.println("[INFO] Standard configuration loaded.");
