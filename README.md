@@ -1,4 +1,4 @@
-# Cyberpunk2077-RPC 
+# Cyberpunk2077-RPC ![Java CI with Maven](https://github.com/angelsflyinhell/Cyberpunk2077-RPC/workflows/Java%20CI%20with%20Maven/badge.svg)
 A Third-Party Cyberpunk2077 Discord Rich Presence for Windows.
 
 # Installation
