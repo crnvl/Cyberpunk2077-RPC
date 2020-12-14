@@ -31,42 +31,37 @@ public class Savestate {
                 (path, attributes) -> attributes.isDirectory()
         ).count() - 1; // '-1' because '/tmp' is also counted in
 
-        for (int j = 0; j < count; j++) {
-            Path path = Path.of("C:\\Users\\" + System.getProperty("user.name") + "\\Saved Games\\CD Projekt Red\\Cyberpunk 2077\\ManualSave-" + j);
-
-            if(Files.exists(path) && containsUser(String.valueOf(path))) {
-                pathFile = String.valueOf(path);
-                save = true;
-                j = 100;
-                if (output) {
-                    System.out.println("[INFO] Manual Savestate loaded.");
+        String savestate;
+        for (int k = 0; k < 3; k++) {
+            for (int j = 0; j < count; j++) {
+                switch (k) {
+                    case 0:
+                        savestate = "ManualSave";
+                        break;
+                    case 1:
+                        savestate = "AutoSave";
+                        break;
+                    case 2:
+                        savestate = "QuickSave";
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + k);
                 }
-            }else if(j == count + 1) {
+                Path path = Path.of("C:\\Users\\" + System.getProperty("user.name") + "\\Saved Games\\CD Projekt Red\\Cyberpunk 2077\\" + savestate + "-" + j);
 
-                if (output) {
-                    System.out.println("[WARNING] Could not find a Manual Savestate. Looking further.");
-                }
-
-                for (int k = 0; k < count; k++) {
-                    path = Path.of("C:\\Users\\" + System.getProperty("user.name") + "\\Saved Games\\CD Projekt Red\\Cyberpunk 2077\\AutoSave-" + k);
-
-                    if(Files.exists(path) && containsUser(String.valueOf(path))) {
-                        pathFile = String.valueOf(path);
-                        save = true;
-                        k = 100;
-                        if (output) {
-                            System.out.println("[INFO] Automatic Savestate loaded.");
-                        }
-                    }else if(k == count + 1) {
-                        if (output) {
-                            System.out.println("[WARNING] Could not find a savestate! Please keep playing and try again.");
-                            System.out.println("[INFO] Standard configuration loaded.");
-                        }
+                if(Files.exists(path) && containsUser(String.valueOf(path))) {
+                    pathFile = String.valueOf(path);
+                    save = true;
+                    if (output) {
+                        System.out.println("[INFO] " + savestate + " Savestate loaded.");
                     }
+                    return save;
+                }else if(j == count) {
+                    j = 0;
                 }
             }
         }
-        return save;
+        return false;
     }
 
     public static boolean containsUser(String pathFile) throws IOException {
