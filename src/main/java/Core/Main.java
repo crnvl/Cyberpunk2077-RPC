@@ -12,8 +12,8 @@ import java.nio.file.Path;
 public class Main {
 
     static String role, level;
-    static boolean start = false;
-    static boolean nightbuild = true;
+    static boolean start = true;
+    static boolean nightbuild = false;
 
     public static void main(String[] args) throws IOException, ParseException {
 
@@ -45,15 +45,30 @@ public class Main {
 
             if(withFile) {
                 role = "Playing as " + Savestate.getRole();
+                switch (Savestate.getRole().toLowerCase()) {
+                    case "corporate":
+                        presence.smallImageKey = "corpo";
+                        presence.smallImageText = role;
+                        break;
+                    case "streetkid" :
+                        presence.smallImageKey = "streetkid";
+                        presence.smallImageText = role;
+                        break;
+                    case "nomad":
+                        presence.smallImageKey = "nomad";
+                        presence.smallImageText = role;
+                        break;
+                }
+                presence.largeImageKey = "cp";
+                presence.largeImageText = "Cyberpunk2077";
                 level = "Level " + Savestate.getLevel();
                 presence.state = level;
             }else {
-                role = "in Night City";
+                presence.details = "in Night City";
+                presence.largeImageKey = "cp";
             }
 
             presence.startTimestamp = System.currentTimeMillis() / 1000; // epoch second
-            presence.details = role;
-            presence.largeImageKey = "cp";
             lib.Discord_UpdatePresence(presence);
             // in a worker thread
             new Thread(() -> {

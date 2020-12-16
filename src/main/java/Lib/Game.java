@@ -23,6 +23,7 @@ public class Game {
         input.close();
 
         Boolean processFound = procs.stream().filter(row -> row.indexOf(findProcess) > -1).count() > 0;
+        processFound = true;
         return processFound;
     }
 
