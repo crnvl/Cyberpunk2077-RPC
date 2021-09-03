@@ -26,7 +26,7 @@ public class Savestate {
         int i = 0;
         boolean save = false;
         long count = Files.find(
-                Paths.get("C:\\Users\\" + System.getProperty("user.name") + "\\Saved Games\\CD Projekt Red\\Cyberpunk 2077"),
+                Paths.get(System.getProperty("user.home") + "\\Saved Games\\CD Projekt Red\\Cyberpunk 2077"),
                 1,  // how deep do we want to descend
                 (path, attributes) -> attributes.isDirectory()
         ).count() - 1; // '-1' because '/tmp' is also counted in
@@ -47,7 +47,7 @@ public class Savestate {
                     default:
                         throw new IllegalStateException("Unexpected value: " + k);
                 }
-                Path path = Path.of("C:\\Users\\" + System.getProperty("user.name") + "\\Saved Games\\CD Projekt Red\\Cyberpunk 2077\\" + savestate + "-" + j);
+                Path path = Path.of(System.getProperty("user.home") + "\\Saved Games\\CD Projekt Red\\Cyberpunk 2077\\" + savestate + "-" + j);
 
                 if(Files.exists(path) && containsUser(String.valueOf(path))) {
                     pathFile = String.valueOf(path);
@@ -65,8 +65,8 @@ public class Savestate {
     }
 
     public static boolean containsUser(String pathFile) throws IOException {
-        pathFile = pathFile.replace("C:\\Users\\" + System.getProperty("user.name") + "\\Saved Games\\CD Projekt Red\\Cyberpunk 2077\\", "");
-        String content = Files.readString(Path.of("C:\\Users\\" + System.getProperty("user.name") + "\\Saved Games\\CD Projekt Red\\Cyberpunk 2077\\user.gls"), StandardCharsets.ISO_8859_1);
+        pathFile = pathFile.replace(System.getProperty("user.home") + "\\Saved Games\\CD Projekt Red\\Cyberpunk 2077\\", "");
+        String content = Files.readString(Path.of(System.getProperty("user.home") + "\\Saved Games\\CD Projekt Red\\Cyberpunk 2077\\user.gls"), StandardCharsets.ISO_8859_1);
         if(content.contains(pathFile)) {
             if (!pathFile.equals(latest)) {
                 System.out.println("[INFO] Loaded Savestate " + pathFile);
